@@ -1,17 +1,37 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import * as ReactDOMClient from 'react-dom/client';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+let greeting = 'Hello';
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+let info = {
+  name: 'Ahmed',
+  age: 29,
+  job: 'engineer',
+};
+
+function App() {
+  return (
+    <div>
+      <Message name={info.name} age={info.age} job={info.job}>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, perspiciatis.
+      </Message>
+    </div>
+  );
+}
+
+function Message({ name, age, job, children }) {
+  // const { name, age, job } = props;
+  return (
+    <div>
+      <h1>{greeting} there</h1>
+      <p>{children}</p>
+      <p>my name is {name}</p>
+      <p>my name is {age}</p>
+      <p>my name is {job}</p>
+    </div>
+  );
+}
+
+const root = ReactDOMClient.createRoot(document.querySelector('#root'));
+
+root.render(<App />);
