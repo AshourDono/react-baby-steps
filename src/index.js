@@ -3,31 +3,53 @@ import * as ReactDOMClient from 'react-dom/client';
 
 let greeting = 'Hello';
 
-let info = {
-  name: 'Ahmed',
-  age: 29,
-  job: 'engineer',
-};
+let info = [
+  {
+    name: 'Ahmed',
+    age: 29,
+    job: 'engineer',
+  },
+  {
+    name: 'Ali',
+    age: 27,
+    job: 'pharmacist',
+  },
+  {
+    name: 'Amr',
+    age: 26,
+    job: 'engineer',
+  },
+  {
+    name: 'Ayman',
+    age: 23,
+    job: 'engineer',
+  },
+];
 
 function App() {
   return (
     <div>
-      <Message name={info.name} age={info.age} job={info.job}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, perspiciatis.
-      </Message>
+      <Message />
     </div>
   );
 }
 
-function Message({ name, age, job, children }) {
-  // const { name, age, job } = props;
+function Message() {
   return (
     <div>
-      <h1>{greeting} there</h1>
-      <p>{children}</p>
-      <p>my name is {name}</p>
-      <p>my name is {age}</p>
-      <p>my name is {job}</p>
+      {info.map(info => {
+        const { name, age, job } = info;
+        return (
+          <div>
+            <h1>
+              {greeting}, {name}
+            </h1>
+            <p>your name is {name}</p>
+            <p>your name is {age}</p>
+            <p>your name is {job}</p>
+          </div>
+        );
+      })}
     </div>
   );
 }
