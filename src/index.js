@@ -32,14 +32,14 @@ function App() {
   return (
     <div>
       {info.map(book => (
-        <Book key={book.id} book={book} />
+        <Book key={book.id} {...book} />
       ))}
     </div>
   );
 }
 
 function Book(props) {
-  const { title, author, image } = props.book;
+  const { title, author, image } = props;
   return (
     <div>
       <p style={{ textAlign: 'center', width: 300 }}>{title}</p>
