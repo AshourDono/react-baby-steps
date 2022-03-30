@@ -1,55 +1,50 @@
 import React from 'react';
 import * as ReactDOMClient from 'react-dom/client';
 
-let greeting = 'Hello';
-
 let info = [
   {
-    name: 'Ahmed',
-    age: 29,
-    job: 'engineer',
+    id: 1,
+    title: 'Vrienden voor het leven',
+    author: 'Maeve Binchy',
+    image: 'http://s.s-bol.com/imgbase0/imagebase/large/FC/5/3/6/6/1001004011806635.jpg',
   },
   {
-    name: 'Ali',
-    age: 27,
-    job: 'pharmacist',
+    id: 2,
+    title: 'Deception point',
+    author: 'Dan Brown',
+    image: 'http://s.s-bol.com/imgbase0/imagebase/large/FC/8/8/9/8/1001004006878988.jpg',
   },
   {
-    name: 'Amr',
-    age: 26,
-    job: 'engineer',
+    id: 3,
+    title: 'Magic staff',
+    author: 'Terry Brooks',
+    image: 'http://s.s-bol.com/imgbase0/imagebase/large/FC/2/2/5/2/9200000002212522.jpg',
   },
   {
-    name: 'Ayman',
-    age: 23,
-    job: 'engineer',
+    id: 4,
+    title: 'De wereld volgens Garp',
+    author: 'John Irving',
+    image: 'http://s.s-bol.com/imgbase0/imagebase/large/FC/6/3/6/7/1001004005997636.jpg',
   },
 ];
 
 function App() {
   return (
     <div>
-      <Message />
+      {info.map(book => (
+        <Book key={book.id} book={book} />
+      ))}
     </div>
   );
 }
 
-function Message() {
+function Book(props) {
+  const { title, author, image } = props.book;
   return (
     <div>
-      {info.map(info => {
-        const { name, age, job } = info;
-        return (
-          <div>
-            <h1>
-              {greeting}, {name}
-            </h1>
-            <p>your name is {name}</p>
-            <p>your name is {age}</p>
-            <p>your name is {job}</p>
-          </div>
-        );
-      })}
+      <p style={{ textAlign: 'center', width: 300 }}>{title}</p>
+      <p style={{ textAlign: 'center', width: 300 }}>{author}</p>
+      <img width={300} src={image}></img>
     </div>
   );
 }
