@@ -1,17 +1,21 @@
-import { Route, Routes } from 'react-router-dom';
-import LoginForm from './Login/LoginForm';
-import RegisterForm from './Register/RegisterForm';
-import TodoApp from './TodoApp/TodoApp';
+// import './App.css';
+import AboutMe from './components/AboutMe';
+import Hero from './components/Hero';
+import Skills from './components/Skills';
+import Projects from './components/Projects';
+import Footer from './components/Footer';
 
 function App() {
+  //parent component
+  //layout
   return (
     <div className='App'>
       <header className='App-header'>
-        <Routes>
-          <Route path='/' element={<LoginForm />} />
-          <Route path='/register' element={<RegisterForm />} />
-          <Route path='/todo' element={<TodoApp />} />
-        </Routes>
+        <Hero />
+        <AboutMe />
+        <Skills />
+        <Projects/>
+        <Footer/>
       </header>
     </div>
   );
