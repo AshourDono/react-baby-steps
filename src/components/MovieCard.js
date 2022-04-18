@@ -1,20 +1,28 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function MovieCard() {
+function MovieCard({ movie }) {
+  let imageBaseUrl = 'https://image.tmdb.org/t/p/w500/';
   return (
     <>
-      <div class='col'>
-        <div class='card h-100 w-75'>
-          <img src='...' class='card-img-top' alt='...' />
-          <div class='card-body'>
-            <h5 class='card-title'>Card title</h5>
-            <p class='card-text'>
-              This is a wider card with supporting text below as a natural lead-in to additional
-              content. This content is a little bit longer.
+      <div className='col'>
+        <div className='card h-100 w-100 bg-transparent'>
+          <img
+            src={`${imageBaseUrl}${movie.backdrop_path}`}
+            className='card-img-top img-fluid'
+            alt=''
+          />
+          <div className='card-body '>
+            <h5 className='card-title '>
+              <Link className='text-decoration-none text-white' to={`/movie/${movie.id}`}>
+                {movie.title}
+              </Link>
+            </h5>
+            <p className='card-text '>
+              <small className='text-white border border-2 rounded-circle p-1'>
+                {movie.vote_average}
+              </small>
             </p>
-          </div>
-          <div class='card-footer'>
-            <small class='text-muted'>Last updated 3 mins ago</small>
           </div>
         </div>
       </div>

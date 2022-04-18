@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import MovieDetails from './components/MovieDetails';
 import Footer from './layouts/Footer';
 import Nav from './layouts/Nav';
 import Favourites from './pages/Favourites';
@@ -8,10 +9,11 @@ import NotFound from './pages/NotFound';
 function App() {
   return (
     <div className='App'>
-      <header className='App-header'>
+      <header className='App-header bg-dark'>
         <Nav />
         <Routes>
           <Route path='/' element={<Movies />} />
+          <Route path='/movie/:id' element={<MovieDetails />} />
           <Route path='/fav' element={<Favourites />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
