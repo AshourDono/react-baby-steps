@@ -6,9 +6,8 @@ import instance from '../network/axiosconfig';
 
 function Movies() {
   const [movies, setMovies] = useState([]);
-  const [page, setPage] = useState(1);
-
-  const param = useParams();
+  // const [page, setPage] = useState(1);
+  let param = useParams();
 
   useEffect(() => {
     instance
@@ -23,32 +22,14 @@ function Movies() {
   }, [param.page]);
 
   const handleNext = page => {
-    let newPage = setPage(page + 1);
-    instance
-      .get(`/popular`, {
-        params: {
-          page: newPage,
-        },
-        crossdomain: true,
-      })
-      .then(res => setMovies(res.data.results))
-      .catch(err => console.log(err));
+    page = page + 1;
   };
 
   const handlePrevious = page => {
     if (page > 1) {
-      let newPage = setPage(page - 1);
-      instance
-        .get(`/popular`, {
-          params: {
-            page: newPage,
-          },
-          crossdomain: true,
-        })
-        .then(res => setMovies(res.data.results))
-        .catch(err => console.log(err));
+      page = page - 1;
     } else {
-      setPage(1);
+      page = 1;
     }
   };
 
@@ -65,10 +46,10 @@ function Movies() {
           <li className='page-item'>
             <Link
               className='page-link'
-              to={`/movies/${page}`}
+              to={`/movies/${param.page > 1 ? parseInt(param.page) - 1 : 1}`}
               tabIndex='-1'
               onClick={() => {
-                handlePrevious(page);
+                handlePrevious(param.page);
               }}>
               Previous
             </Link>
@@ -77,9 +58,9 @@ function Movies() {
           <li className='page-item'>
             <Link
               className='page-link'
-              to={`/movies/${page}`}
+              to={`/movies/${parseInt(param.page) + 1}`}
               onClick={() => {
-                handleNext(page);
+                handleNext(param.page);
               }}>
               Next
             </Link>
